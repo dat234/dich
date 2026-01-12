@@ -1,5 +1,4 @@
-/* 
- * @copyright (c) 2008, Hedspi, Hanoi University of Technology
+/* * @copyright (c) 2008, Hedspi, Hanoi University of Technology
  * @author Huu-Duc Nguyen
  * @version 1.0
  */
@@ -8,6 +7,7 @@
 #include <ctype.h>
 #include "token.h"
 
+// Mảng ánh xạ từ chuỗi ký tự sang loại Token (TokenType)
 struct {
   char string[MAX_IDENT_LEN + 1];
   TokenType tokenType;
@@ -31,9 +31,16 @@ struct {
   {"WHILE", KW_WHILE},
   {"DO", KW_DO},
   {"FOR", KW_FOR},
-  {"TO", KW_TO}
+  {"TO", KW_TO},
+  // [SỬA ĐỔI QUAN TRỌNG] Thêm 4 dòng này để khớp với KEYWORDS_COUNT = 24
+  {"MOD", KW_MOD},
+  {"AND", KW_AND},
+  {"OR", KW_OR},
+  {"NOT", KW_NOT}
+  // -------------------------------------------------------------------
 };
 
+// Hàm so sánh 2 từ khóa
 int keywordEq(char *kw, char *string) {
   while ((*kw != '\0') && (*string != '\0')) {
     if (*kw != *string) break;
@@ -42,6 +49,7 @@ int keywordEq(char *kw, char *string) {
   return ((*kw == '\0') && (*string == '\0'));
 }
 
+// Hàm kiểm tra xem một chuỗi có phải là từ khóa không
 TokenType checkKeyword(char *string) {
   int i;
   for (i = 0; i < KEYWORDS_COUNT; i++)
@@ -50,6 +58,7 @@ TokenType checkKeyword(char *string) {
   return TK_NONE;
 }
 
+// Hàm tạo mới một token
 Token* makeToken(TokenType tokenType, int lineNo, int colNo) {
   Token *token = (Token*)malloc(sizeof(Token));
   token->tokenType = tokenType;
@@ -58,6 +67,7 @@ Token* makeToken(TokenType tokenType, int lineNo, int colNo) {
   return token;
 }
 
+// Hàm chuyển loại token sang chuỗi (dùng để in ấn/debug)
 char *tokenToString(TokenType tokenType) {
   switch (tokenType) {
   case TK_NONE: return "None";
@@ -86,6 +96,13 @@ char *tokenToString(TokenType tokenType) {
   case KW_DO: return "keyword DO";
   case KW_FOR: return "keyword FOR";
   case KW_TO: return "keyword TO";
+
+  // [SỬA ĐỔI] Thêm chuỗi hiển thị cho các từ khóa mới
+  case KW_MOD: return "keyword MOD";
+  case KW_AND: return "keyword AND";
+  case KW_OR: return "keyword OR";
+  case KW_NOT: return "keyword NOT";
+  // ------------------------------------------------
 
   case SB_SEMICOLON: return "\';\'";
   case SB_COLON: return "\':\'";

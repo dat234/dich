@@ -1,0 +1,18 @@
+PROGRAM UCLN;
+VAR a : INTEGER;
+    b : INTEGER;
+
+BEGIN
+  Call WriteI(1001); (* Nhập a *)
+  a := ReadI;
+  Call WriteI(1002); (* Nhập b *)
+  b := ReadI;
+
+  WHILE a != b DO
+    BEGIN
+      IF a > b THEN a := a - b
+      ELSE b := b - a;
+    END;
+
+  Call WriteI(a); (* In kết quả UCLN *)
+END.

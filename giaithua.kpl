@@ -1,0 +1,13 @@
+PROGRAM GiaiThua;
+VAR n : INTEGER;
+    gt : INTEGER;
+    i : INTEGER;
+
+BEGIN
+  Call WriteI(100); (* In ra màn hình dấu hiệu nhập *)
+  n := ReadI;
+  gt := 1;
+  FOR i := 1 TO n DO
+    gt := gt * i;
+  Call WriteI(gt);
+END.

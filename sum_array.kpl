@@ -1,0 +1,22 @@
+PROGRAM SumArray;
+CONST Max = 20;
+TYPE ArrInt = ARRAY (. 20 .) OF INTEGER; (* Khai báo kiểu mảng *)
+VAR A : ArrInt;
+    n : INTEGER;
+    i : INTEGER;
+    sum : INTEGER;
+
+BEGIN
+  n := ReadI; (* Nhập số lượng phần tử *)
+  
+  (* Nhập mảng *)
+  FOR i := 1 TO n DO
+    A(. i .) := ReadI;
+
+  (* Tính tổng *)
+  sum := 0;
+  FOR i := 1 TO n DO
+    sum := sum + A(. i .);
+
+  Call WriteI(sum);
+END.

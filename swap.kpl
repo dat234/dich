@@ -1,0 +1,11 @@
+PROGRAM Swap;
+VAR x : INTEGER;
+    y : INTEGER;
+BEGIN
+  x := 10;
+  y := 20;
+  (* Cú pháp mới: Hoán đổi giá trị *)
+  x, y := y, x;
+  Call WriteI(x); (* Mong đợi: 20 *)
+  Call WriteI(y); (* Mong đợi: 10 *)
+END.

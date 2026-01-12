@@ -1,0 +1,13 @@
+PROGRAM TinhTong;
+VAR n : INTEGER;
+    sum : INTEGER;
+    i : INTEGER;
+
+BEGIN
+  n := ReadI;
+  sum := 0;
+  FOR i := 1 TO n DO
+    sum := sum + i;
+  CALL WriteI(sum);
+  CALL WriteLn;
+END.

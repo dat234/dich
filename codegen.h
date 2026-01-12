@@ -1,5 +1,4 @@
-/* 
- * @copyright (c) 2008, Hedspi, Hanoi University of Technology
+/* * @copyright (c) 2008, Hedspi, Hanoi University of Technology
  * @author Huu-Duc Nguyen
  * @version 1.0
  */
@@ -84,6 +83,13 @@ void genGT(void);
 void genGE(void);
 void genLT(void);
 void genLE(void);
+
+// [SỬA ĐỔI] Thêm khai báo hàm sinh mã mới
+void genMOD(void);
+void genAND(void);
+void genOR(void);
+void genNOT(void);
+// --------------------------------------
 
 void updateJ(Instruction* jmp, CodeAddress label);
 void updateFJ(Instruction* jmp, CodeAddress label);

@@ -1,0 +1,144 @@
+PROGRAM TenChuongTrinh;  (* Từ khóa PROGRAM + Tên + Dấu chấm phẩy *)
+
+(* Phần khai báo (Tùy chọn) *)
+CONST ...
+TYPE ...
+VAR ...
+FUNCTION ...
+PROCEDURE ...
+
+BEGIN
+  (* Thân chương trình *)
+  Statement1;
+  Statement2;
+END.  (* Kết thúc bằng dấu chấm *)
+2. Các kiểu dữ liệu cơ bản
+KPL hỗ trợ các kiểu dữ liệu sau (định nghĩa trong symtab.c và parser.c):
+
+INTEGER: Số nguyên.
+
+CHAR: Ký tự đơn.
+
+ARRAY (. size .) OF Type: Mảng (Lưu ý dấu ngoặc vuông [ ] hoặc (. .) tùy scanner, nhưng thường là (. .) hoặc [ ]).
+
+3. Phần Khai Báo (Declarations)
+Khai báo Hằng (CONST)
+Delphi
+
+CONST Max = 100;
+      Pi = 3;     (* KPL này chỉ hỗ trợ hằng số nguyên hoặc ký tự *)
+      Ch = 'A';
+Khai báo Kiểu (TYPE)
+Delphi
+
+TYPE MyInt = INTEGER;
+     ArrType = ARRAY (. 10 .) OF INTEGER; (* Mảng 10 phần tử kiểu Integer *)
+Khai báo Biến (VAR)
+Delphi
+
+VAR x : INTEGER;
+    y : INTEGER;
+    a : ArrType;
+    c : CHAR;
+4. Hàm và Thủ tục (Subprograms)
+Hàm (FUNCTION) - Có trả về giá trị
+Delphi
+
+FUNCTION TenHam(x : INTEGER; VAR y : INTEGER) : INTEGER;
+VAR z : INTEGER; (* Biến cục bộ *)
+BEGIN
+  z := x + y;
+  TenHam := z;   (* Gán tên hàm = giá trị để trả về (return) *)
+END;
+Lưu ý: Tham số có từ khóa VAR đằng trước là tham biến (thay đổi giá trị sau khi ra khỏi hàm), không có là tham trị.
+
+Thủ tục (PROCEDURE) - Không trả về giá trị
+Delphi
+
+PROCEDURE TenThuTuc(n : INTEGER);
+BEGIN
+  (* Các lệnh thực thi *)
+END;
+5. Các câu lệnh cơ bản (Statements)
+Lệnh gán (Assignment)
+Sử dụng toán tử :=
+
+Delphi
+
+x := 10;
+c := 'B';
+x := y + 1;
+A(. 1 .) := 5; (* Gán cho phần tử mảng *)
+Lệnh gọi thủ tục (CALL)
+Lưu ý quan trọng: Khác với Pascal chuẩn, KPL bắt buộc phải có từ khóa CALL trước tên thủ tục.
+
+Delphi
+
+CALL WriteI(x);
+CALL TenThuTuc(10);
+Khối lệnh (Block)
+Delphi
+
+BEGIN
+  Lenh1;
+  Lenh2;
+END
+6. Cấu trúc điều khiển
+Câu lệnh điều kiện (IF)
+Delphi
+
+(* Dạng thiếu *)
+IF x > 0 THEN x := x - 1;
+
+(* Dạng đủ *)
+IF x = 10 THEN
+  CALL WriteI(1)
+ELSE
+  CALL WriteI(0);
+Vòng lặp đếm (FOR)
+Delphi
+
+FOR i := 1 TO 10 DO
+  Sum := Sum + i;
+Vòng lặp điều kiện (WHILE)
+Delphi
+
+WHILE x < 100 DO
+BEGIN
+  x := x + 1;
+  CALL WriteI(x);
+END
+7. Nhập xuất (I/O)
+Dựa vào file symtab.c, KPL có sẵn các hàm/thủ tục nhập xuất sau:
+
+ReadI (Hàm): Đọc một số nguyên từ bàn phím.
+
+Delphi
+
+n := ReadI;
+ReadC (Hàm): Đọc một ký tự.
+
+Delphi
+
+ch := ReadC;
+WriteI(i) (Thủ tục): In số nguyên i ra màn hình.
+
+Delphi
+
+CALL WriteI(100);
+WriteC(ch) (Thủ tục): In ký tự ch ra màn hình.
+
+Delphi
+
+CALL WriteC('A');
+WriteLn (Thủ tục): Xuống dòng.
+
+Delphi
+
+CALL WriteLn;
+8. Comment (Ghi chú)
+Sử dụng cặp dấu (* và *).
+
+Delphi
+
+(* Đây là một dòng ghi chú *)

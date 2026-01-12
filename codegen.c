@@ -1,5 +1,4 @@
-/* 
- * @copyright (c) 2008, Hedspi, Hanoi University of Technology
+/* * @copyright (c) 2008, Hedspi, Hanoi University of Technology
  * @author Huu-Duc Nguyen
  * @version 1.0
  */
@@ -214,6 +213,24 @@ void genLT(void) {
 void genLE(void) {
   emitLE(codeBlock);
 }
+
+// [SỬA ĐỔI] Cài đặt hàm sinh mã cho toán tử mới
+void genMOD(void) {
+  emitCode(codeBlock, OP_MOD, DC_VALUE, DC_VALUE);
+}
+
+void genAND(void) {
+  emitCode(codeBlock, OP_AND, DC_VALUE, DC_VALUE);
+}
+
+void genOR(void) {
+  emitCode(codeBlock, OP_OR, DC_VALUE, DC_VALUE);
+}
+
+void genNOT(void) {
+  emitCode(codeBlock, OP_NOT, DC_VALUE, DC_VALUE);
+}
+// ---------------------------------------------
 
 void updateJ(Instruction* jmp, CodeAddress label) {
   jmp->q = label;

@@ -1,0 +1,51 @@
+PROGRAM Fibonacci;
+VAR n : INTEGER;
+    f1 : INTEGER;
+    f2 : INTEGER;
+    fn : INTEGER;
+    i : INTEGER;
+
+BEGIN
+  n := ReadI; (* Nhập số thứ tự n cần tìm *)
+
+  IF n <= 1 THEN 
+    Call WriteI(n)
+  ELSE 
+    BEGIN
+      f1 := 0;
+      f2 := 1;
+      (* Vòng lặp từ 2 đến n *)
+      FOR i := 2 TO n DO 
+        BEGIN
+          fn := f1 + f2;
+          f1 := f2;
+          f2 := fn;
+        END;
+      Call WriteI(fn);
+    END;
+END.PROGRAM Fibonacci;
+VAR n : INTEGER;
+    f1 : INTEGER;
+    f2 : INTEGER;
+    fn : INTEGER;
+    i : INTEGER;
+
+BEGIN
+  n := ReadI; (* Nhập số thứ tự n cần tìm *)
+
+  IF n <= 1 THEN 
+    Call WriteI(n)
+  ELSE 
+    BEGIN
+      f1 := 0;
+      f2 := 1;
+      (* Vòng lặp từ 2 đến n *)
+      FOR i := 2 TO n DO 
+        BEGIN
+          fn := f1 + f2;
+          f1 := f2;
+          f2 := fn;
+        END;
+      Call WriteI(fn);
+    END;
+END.
